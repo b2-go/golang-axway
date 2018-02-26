@@ -1,3 +1,3 @@
 FROM scratch
 ADD axwaymws /
-CMD ["/axwaymws"]
+CMD ["/axwaymws localhost axway axwaymws"]

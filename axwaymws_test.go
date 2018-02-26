@@ -41,16 +41,16 @@ func TestGet404Route(t *testing.T) {
 
 func TestGet200Route(t *testing.T) {
 	router := setupRouter()
-	testPostThenGet(t, "value", router)
+	PostThenGetCheck(t, "value", router)
 }
 
 func TestGetPutGet200Route(t *testing.T) {
 	router := setupRouter()
-	testPostThenGet(t, "value", router)
-	testPostThenGet(t, "value2", router)
+	PostThenGetCheck(t, "value", router)
+	PostThenGetCheck(t, "value2", router)
 }
 
-func testPostThenGet(t *testing.T, value string, router *gin.Engine) {
+func PostThenGetCheck(t *testing.T, value string, router *gin.Engine) {
 	wPost := httptest.NewRecorder()
 	reqPost, _ := http.NewRequest("POST", "/v1/keyvalue?key=key&value=" + value, nil)
 	router.ServeHTTP(wPost, reqPost)
